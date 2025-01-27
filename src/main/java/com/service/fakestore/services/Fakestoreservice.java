@@ -1,6 +1,7 @@
 package com.service.fakestore.services;
 
 import com.service.fakestore.dtos.FakeStoreProductdto;
+import com.service.fakestore.exceptions.Productnotfoundexception;
 import com.service.fakestore.models.Category;
 import com.service.fakestore.models.Product;
 import org.springframework.http.HttpMethod;
@@ -27,8 +28,15 @@ public class Fakestoreservice implements Productservice {
         product.setImage(Fakestoreproduct.getImage());
         return product;
     }
-    public Product getproductbyid(Long id){
+
+    public Product getproductbyid(Long id) throws Productnotfoundexception{
         FakeStoreProductdto fakeStoreProductdto= restTemplate.getForObject("https://fakestoreapi.com/products/"+id, FakeStoreProductdto.class);
+        if(fakeStoreProductdto==null){
+            throw new Productnotfoundexception(id,"Product with "+id+" not found");
+        }
+//        Product prod = convertFakeStoreDtoToProduct(fakeStoreProductdto);
+//        System.out.println(prod);
+
         return convertFakeStoreDtoToProduct(fakeStoreProductdto);
     }
 
@@ -42,7 +50,8 @@ public class Fakestoreservice implements Productservice {
     }
 
     @Override
-    public boolean deleteproductbyid(long id) {
+    public boolean deleteproductbyid(long id)  throws Productnotfoundexception{
+      //  Product prod = getproductbyid(id);
        if(getproductbyid(id)!=null){
            restTemplate.delete("https://fakestoreapi.com/products/"+id);
            return true;
