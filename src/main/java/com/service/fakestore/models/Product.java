@@ -1,17 +1,20 @@
 package com.service.fakestore.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 
-
-public class Product {
+@Entity
+public class Product extends Baseclass {
 
     private String title;
     private String description;
     private double price;
+    @ManyToOne
     private Category category;
     private String image;
 

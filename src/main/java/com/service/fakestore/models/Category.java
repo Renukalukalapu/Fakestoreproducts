@@ -1,6 +1,16 @@
 package com.service.fakestore.models;
 
-public class Category {
-    private long id;
-    private String description;
+import jakarta.persistence.Entity;
+
+@Entity
+public class Category extends Baseclass{
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
