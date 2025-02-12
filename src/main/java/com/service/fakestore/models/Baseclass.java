@@ -1,8 +1,6 @@
 package com.service.fakestore.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,6 +9,7 @@ import java.util.Date;
 @MappedSuperclass
 public class Baseclass {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private Date createdat;
     private Date updateat;

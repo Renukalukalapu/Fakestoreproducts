@@ -1,6 +1,8 @@
 package com.service.fakestore.services;
 
+import com.service.fakestore.Projection.gettitlepriceproduct;
 import com.service.fakestore.exceptions.Productnotfoundexception;
+//import com.service.fakestore.models.Product;
 import com.service.fakestore.models.Product;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,4 +16,7 @@ public interface Productservice  {
     boolean deleteproductbyid(long id) throws Productnotfoundexception;
 
     Product updateproductbyid(long id, Product product);
+    Product addproduct(Product product);
+
+    List<gettitlepriceproduct> getallproductbycategory(long id);
 }

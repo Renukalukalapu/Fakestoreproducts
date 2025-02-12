@@ -1,6 +1,8 @@
 package com.service.fakestore.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.Getter;
@@ -10,11 +12,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Entity
 public class Product extends Baseclass {
-
     private String title;
     private String description;
     private double price;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+ //   @ManyToOne
+    @JoinColumn
     private Category category;
     private String image;
 

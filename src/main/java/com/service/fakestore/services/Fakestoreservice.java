@@ -1,5 +1,6 @@
 package com.service.fakestore.services;
 
+import com.service.fakestore.Projection.gettitlepriceproduct;
 import com.service.fakestore.dtos.FakeStoreProductdto;
 import com.service.fakestore.exceptions.Productnotfoundexception;
 import com.service.fakestore.models.Category;
@@ -80,6 +81,16 @@ public class Fakestoreservice implements Productservice {
 
         return convertFakeStoreDtoToProduct(response);
 
+    }
+
+    @Override
+    public Product addproduct(Product product) {
+        return null;
+    }
+
+    @Override
+    public List<gettitlepriceproduct> getallproductbycategory(long id) {
+        return List.of();
     }
 
 
